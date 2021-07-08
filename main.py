@@ -1,10 +1,15 @@
 import discord
+from discord import message
 import requests
 import json
 import os
 import html
 from dotenv import load_dotenv
 load_dotenv(".env")
+
+intents = discord.Intents.default()
+intents.members = True
+
 
 qn = ["No questions asked", "No questions asked"]
 
@@ -30,7 +35,7 @@ def get_cat_fact():
   return html.unescape(question)
 
 
-client = discord.Client()
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
@@ -60,6 +65,11 @@ async def on_message(message):
   if message.content.startswith('$catFact'):
     text = get_cat_fact()
     await message.channel.send(text)   
+
+@client.event
+async def on_member_join(member):
+  global name, college, current
+  await member.send('Please provide your name')
 
 
 
