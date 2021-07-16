@@ -6,3 +6,7 @@ html
 discord.utils
 discord.ext
 dotenv
+message
+get
+commands
+load_dotenv
