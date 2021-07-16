@@ -112,7 +112,7 @@ async def on_message(message):
 @client.event
 async def on_member_join(member):
   global name, college, current, qns
-  qns=  ["Please peovide your name", "Are you a current member of Les Quizerables, KGEC?"]
+  qns=  ["Please provide your name", "Are you a current member of Les Quizerables, KGEC?"]
   await member.send(qns[0])
   
     
