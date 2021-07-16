@@ -1,0 +1,8 @@
+discord
+requests
+json 
+os
+html
+discord.utils
+discord.ext
+dotenv
