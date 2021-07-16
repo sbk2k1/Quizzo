@@ -4,12 +4,13 @@ import requests
 import json
 import os
 import html
+from discord.utils import get
+from discord.ext import commands
 from dotenv import load_dotenv
 load_dotenv(".env")
 
 intents = discord.Intents.default()
 intents.members = True
-
 
 qn = ["No questions asked", "No questions asked"]
 
@@ -66,10 +67,55 @@ async def on_message(message):
     text = get_cat_fact()
     await message.channel.send(text)   
 
+
+  #check DM channel
+
+  if isinstance(message.channel, discord.DMChannel)and client.user is not message.author:
+
+    
+    if(message.content.lower()=='yes' or message.content.lower()=='y'):
+      guild= client.get_guild(862347310121877558)
+      for m in guild.members:
+        if(m == message.author):
+          role = get(m.guild.roles, id=862350627739664425)
+          await m.add_roles(role)
+        
+        
+
+
+    elif(message.content.lower()=='no' or message.content.lower()=='n'):
+      guild= client.get_guild(862347310121877558)
+      for m in guild.members:
+        if(m == message.author):
+          role = get(m.guild.roles, id=862350532537352242)
+          await m.add_roles(role)
+
+
+
+
+
+    elif (all(x.isalpha or x == " " for x in  message.content) and (message.content.lower()!='no' or message.content.lower()!='n' or message.content.lower()!='yes' or message.content.lower()!='y')):
+      guild= client.get_guild(862347310121877558)
+      for m in guild.members:
+        if(m == message.author):
+          await m.edit(nick=message.content)
+          await m.send(qns[1])
+
+    else:
+      message.author.send("Looking into it")  
+
+
+
+
+
+
 @client.event
 async def on_member_join(member):
-  global name, college, current
-  await member.send('Please provide your name')
+  global name, college, current, qns
+  qns=  ["Please peovide your name", "Are you a current member of Les Quizerables, KGEC?"]
+  await member.send(qns[0])
+  
+    
 
 
 
