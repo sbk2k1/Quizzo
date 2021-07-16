@@ -1,12 +1,3 @@
-discord
+discord.py
 requests
-json 
-os
-html
-discord.utils
-discord.ext
 dotenv
-message
-get
-commands
-load_dotenv
