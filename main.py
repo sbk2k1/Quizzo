@@ -6,8 +6,8 @@ import os
 import html
 from discord.utils import get
 from discord.ext import commands
-from dotenv import load_dotenv
-load_dotenv(".env")
+# from dotenv import load_dotenv
+# load_dotenv(".env")
 
 intents = discord.Intents.default()
 intents.members = True
