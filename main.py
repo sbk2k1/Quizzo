@@ -112,6 +112,8 @@ async def on_message(message):
 @client.event
 async def on_member_join(member):
   global name, college, current, qns
+  role = get(m.guild.roles, id=865927707027832884)
+  await m.add_roles(role)
   qns=  ["Please provide your name", "Are you a current member of Les Quizerables, KGEC?"]
   await member.send(qns[0])
   
@@ -119,6 +121,6 @@ async def on_member_join(member):
 
 
 
-my_secret = os.getenv('TOKEN')
+my_secret = "ODYyNTkyOTUyOTQ1OTk5OTIy.YOamSg.hVgrjsWHqbioDW4Y2SdrfhDXQjk"
 print(my_secret)
 client.run(my_secret)
