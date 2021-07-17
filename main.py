@@ -123,4 +123,5 @@ async def on_member_join(member):
 
 my_secret = "ODYyNTkyOTUyOTQ1OTk5OTIy.YOamSg.hVgrjsWHqbioDW4Y2SdrfhDXQjk"
 print(my_secret)
+token = os.environ['TOKEN']
 client.run(my_secret)
